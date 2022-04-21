@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width , initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compitable" content="ie=edge" />
+    <!-- css style-sheet link -->
+    <link rel="stylesheet" href="./css/icon-font.css" />
+    <link rel="stylesheet" href="./css/index.css" />
+    <title>eGov</title>
+</head>
+<body>
+
+    <header class="header">
+        <div class="header__text-box">
+            <h1 class="heading-primary">
+                <span class="heading-primary--sub">e-Gov portal</span>
+                <span class="heading-primary--sub">Contact us</span>
+            </h1>
+        </div>
+    </header>
+
+    <main>
+        <!-- for UG Project -->
+        <section class="section-rai">
+            <div class="row">
+                <div class="rai">
+                    <div class="rai_form">
+
+                        <form class="form" action="/complain" method="POST">
+                            <div class="rai_form_header">
+                                <h2 class="rai_form_h2">Report an issue</h2>
+                            </div>
+
+                            <div class="form_group">
+                                <!-- <input type="text" class="form_input" placeholder="full name" id="name" required />
+                                <label for="name" class="form_label">Full name</label> -->
+                               
+                                <!-- <input type="text" class="form_input" placeholder="Adhaar number" id="adhaar"
+                                    required />
+                                <label for="adhaar" class="form_label">ADHAAR NUMBER</label>
+                                <input type="file" class="form_input" placeholder="adhaar number" id="report_pic"
+                                    required /> -->
+
+                                <label for="report_pic" class="form_label"></label>
+                                <textarea class="form_input" name="issue" rows="3" cols="40" id="issue"
+                                    placeholder="report your issue"></textarea>
+                                <label for="issue" class="form_label"></label>
+
+                                <input type="text" name="location" class="form_input" placeholder="location" id="location" required />
+                                <label for="location" class="form_label">location</label> 
+
+                                <input type="text" name="image" class="form_input" placeholder="image link" id="image" />
+                                <label for="name" class="form_label">image link</label>
+
+                                <!-- <input type="text" class="form_input" placeholder="&ofcir;  current location"
+                                    id="location" required disabled />
+                                <label for="location" class="form_label"></label> -->
+
+                            </div> 
+
+                            <div class="form_group">
+                                <button type="submit" name="button" class="rai_submit_btn">
+                                    Submit
+                                </button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+</body>
+
+</html>
