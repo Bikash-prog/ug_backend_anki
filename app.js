@@ -11,10 +11,10 @@ const passportLocalMongoose = require("passport-local-mongoose");
 
 const app = express();
 
-const corsOptions ={
-    origin:'http://localhost:3000',
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,            //access-control-allow-credentials:true
+  optionSuccessStatus: 200
 }
 app.use(cors(corsOptions));
 
@@ -38,7 +38,7 @@ app.use(passport.session());
 // const DB = "mongodb://localhost:27017/userDATA"; //to connect with local database
 // TODO:
 
-const DB = "ADD YOUR OWN DATABASE LINK";
+const DB = "mongodb://egov:zGb8MWpBoFLKJgFS@cluster0-shard-00-00.icon5.mongodb.net:27017,cluster0-shard-00-01.icon5.mongodb.net:27017,cluster0-shard-00-02.icon5.mongodb.net:27017/egov?ssl=true&replicaSet=atlas-gyu8ly-shard-0&authSource=admin&retryWrites=true&w=majority";
 
 mongoose.connect(DB, { useNewUrlParser: true });
 // mongoose.set("useCreateIndex", true);// don't use it until not get any warning after not using it
@@ -255,7 +255,8 @@ app.post("/register", function (req, res) {
     else {
       // type/strategy of authentication is "local"
       passport.authenticate("local", { failureRedirect: "/register" })(req, res, function () {
-        res.redirect("/secrets");
+        // res.redirect("/secrets");
+        res.send(user.id)
       });
     }
   });
