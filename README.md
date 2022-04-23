@@ -1,2 +1,2 @@
-# ug_backend_anki
+# ug_backend_ankit
 ankit_api
