@@ -50,11 +50,18 @@ const userSchema = new mongoose.Schema({
   // mobile: String,
   // email: String ,
   password: String,
-  // complain: String
+  
+
+
   complain: Array,
+  complainlocation: Array,
+  imagelink: Array,
+  complainwaterbody:Array,
+
+  datalocation: Array,
   data: Array,
-  location: Array,
-  image: Array,
+  datawaterbody: Array,
+
   coin: Number
 
 });
@@ -108,58 +115,113 @@ app.get("/complain", function (req, res) {
 
 });
 
+
+// app.post("/complain", function (req, res) {
+//   // const comp=req.body.issue;
+//   console.log(req);
+
+//   if (req.isAuthenticated()) {
+//     User.findById(req.user.id, function (err, foundUser) {
+//       if (err) {
+//         console.log(err);
+//       }
+//       else {
+//         if (foundUser) {
+//           console.log("submitted");
+//           foundUser.complain.push(comp);
+
+//           foundUser.save(function () {
+//             res.redirect("/complain");
+//           });
+//         }
+//       }
+//     });
+//   } else {
+//     res.redirect("/");
+//   }
+
+//   console.log("entered in this function...");
+
+//   const comp = req.body.issue;
+//   console.log(comp);
+//   console.log(req);
+//   console.log(req.user.id);
+
+
+//   from here
+
+//   if (req.isAuthenticated()) {
+//     User.findById(req.user.id, function (err, foundUser) {
+//       if (err) {
+//         console.log(err);
+//       }
+//       else {
+//         if (foundUser) {
+//           console.log("submitted");
+//           foundUser.complain.push(comp);
+
+//           foundUser.save(function () {
+//             res.redirect("/complain");
+//           });
+//         }
+//       }
+//     });
+//   } else {
+//     res.redirect("/");
+//   }
+//   res.send(1);
+
+
+// });
+
+
+
+
 app.post("/complain", function (req, res) {
-  // const comp=req.body.issue;
-  // console.log(comp);
+  // console.log(req);
 
-  // if (req.isAuthenticated()) {
-  //   User.findById(req.user.id, function (err, foundUser) {
-  //     if (err) {
-  //       console.log(err);
-  //     }
-  //     else {
-  //       if (foundUser) {
-  //         console.log("submitted");
-  //         foundUser.complain.push(comp);
-
-  //         foundUser.save(function () {
-  //           res.redirect("/complain");
-  //         });
-  //       }
-  //     }
-  //   });
-  // } else {
-  //   res.redirect("/");
-  // }
-
-  console.log("entered in this function...");
-
-  const comp = req.body.issue;
-  console.log(comp);
-
-  if (req.isAuthenticated()) {
-    User.findById(req.user.id, function (err, foundUser) {
+    User.findById(req.body.id, function (err, foundUser) {
       if (err) {
         console.log(err);
       }
       else {
         if (foundUser) {
-          console.log("submitted");
-          foundUser.complain.push(comp);
+          // console.log("submitted");
+          foundUser.complain.push(req.body.issue);
+          foundUser.complainlocation.push(req.body.location);
+          foundUser.imagelink.push(req.body.imagelink);
+          foundUser.complainwaterbody.push(req.body.waterbody);
 
           foundUser.save(function () {
-            res.redirect("/complain");
+            res.sendStatus(200);
           });
         }
       }
     });
-  } else {
-    res.redirect("/");
-  }
-
-
-
 });
+
+app.post("/dataentry", function (req, res) {
+  // console.log(req);
+
+    User.findById(req.body.id, function (err, foundUser) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (foundUser) {
+          // console.log("submitted");
+          foundUser.data.push(req.body.data);
+          foundUser.datalocation.push(req.body.location);
+          foundUser.datawaterbody.push(req.body.waterbody);
+
+          foundUser.save(function () {
+            res.sendStatus(200);
+          });
+        }
+      }
+    });
+});
+
 
 
 
@@ -218,7 +280,7 @@ app.get("/", function (req, res) {
 // });
 
 app.get("/login", function (req, res) {
-  res.send(null)
+  res.send(null);
 });
 
 app.get("/register", function (req, res) {
