@@ -187,9 +187,10 @@ app.post("/dataentry", function (req, res) {
   });
 });
 
-
-
-
+// app.get("/use", function (req, res) {
+//   console.log("reaching here");
+//     res.send(this.user.id);
+// });
 
 app.get("/", function (req, res) {
   // res.render("home");
