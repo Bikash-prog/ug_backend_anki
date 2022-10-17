@@ -121,6 +121,62 @@ app.post("/dataentry", function (req, res) {
   });
 });
 
+<<<<<<< HEAD
+// app.get("/use", function (req, res) {
+//   console.log("reaching here");
+//     res.send(this.user.id);
+// });
+
+app.get("/", function (req, res) {
+  // res.render("home");
+  if (req.isAuthenticated()) {
+    // PASTE THIS CODE IN POST REQUEST OF COMPLAIN FORM
+
+
+    // console.log(req.user);
+    // console.log(req.user.id);
+
+    User.findById(req.user.id, function (err, foundUser) {
+      if (err) {
+        console.log(err);
+      }
+      else {
+        if (foundUser) {
+          // foundUser.complain.push("this is the registered complain by user");
+          // foundUser.complain.push("second complain");
+
+          foundUser.save(function () {
+            // res.redirect("/complain");
+          });
+        }
+      }
+    });
+
+    // PASTE THIS CODE IN POST REQUEST OF COMPLAIN FORM
+
+    // PASTE BELOW CODE TO DISPLAY ALL COMPLAIN IN COMPLAIN LIST
+
+    User.find({ "complain": { $ne: null } }, function (err, foundUsers) {
+      if (err) {
+        console.log(err);
+      } else {
+        if (foundUsers) {
+          // console.log(foundUsers[1].complain[1]);
+        }
+      }
+    });
+    // USE ABOVE CODE TO SHOW ALL COMPLAIN IN COMPLAIN LIST
+
+
+    // FOR NOW REMOVE COMMENTED PART
+
+    res.render("secrets");
+  } else {
+    res.render("home");
+  }
+});
+=======
+>>>>>>> 8477377b728efae261296bb054236fd55b715502
 
 app.get("/login", function (req, res) {
   res.send(null);
